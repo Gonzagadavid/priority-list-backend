@@ -1,12 +1,11 @@
 import TaskModel from '../../models/TaskModel.js';
-import tasksProcessing from './helpers/tasksProcessing.js';
 
 const Task = new TaskModel();
 
 const find = async (userId) => {
-  const tasks = await Task.find({ userId });
+  const tasks = await Task.findTasks({ userId });
 
-  return tasksProcessing(tasks);
+  return tasks;
 };
 
 export default find;

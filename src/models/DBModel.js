@@ -12,9 +12,10 @@ class DBModel {
     return product;
   }
 
-  async find(filter = {}) {
+  async find(filter = {}, projection = {}) {
     this.connection = await connection();
-    const product = await this.connection.collection(this.collection).find(filter).toArray();
+    const product = await this.connection.collection(this.collection)
+      .find(filter, { projection }).toArray();
     return product;
   }
 

@@ -6,6 +6,14 @@ class TaskModel extends DBModel {
     super('tasks');
   }
 
+  async findTasks(userId) {
+    const fields = {
+      userId: 0, description: 0, updated: 0,
+    };
+    const tasks = await this.find(userId, fields);
+    return tasks;
+  }
+
   async findTaskById(id) {
     const task = await this.findOne({ _id: ObjectId(id) });
 
